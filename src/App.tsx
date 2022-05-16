@@ -1,24 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import Table from "./components/Table";
+import Button from "./components/Button";
 
 function App() {
+
+    let maxValue = 5;
+    let minValue = 0;
+    let [value, setValue] = useState(minValue);
+
+    const incrementValue = () => {
+        setValue(value + 1);
+    }
+
+    const resetValue = () => {
+        setValue(0);
+    }
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <div className={'wrapper'}>
+            <Table value={value} maxValue={maxValue} minValue={minValue}/>
+            <div className={'button-block'}>
+                <Button name={'INC'} callBack={incrementValue} disabled={maxValue} value={value}/>
+                <Button name={'RESET'} callBack={resetValue} disabled={minValue} value={value}/>
+            </div>
+        </div>
+        {/*<div className={'wrapper'}>*/}
+        {/*    <Table />*/}
+        {/*    <div className={'button-block'}>*/}
+        {/*        <Button name={'SET'}/>*/}
+        {/*    </div>*/}
+        {/*</div>*/}
     </div>
   );
 }
