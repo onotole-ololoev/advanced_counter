@@ -7,10 +7,10 @@ type InputType = {
 }
 
 const Input = (props: InputType) => {
-    let [prevValue, setPrevValue] = useState(props.value)
+    // let [prevValue, setPrevValue] = useState(props.value)
     const onChangeHandle = (e: ChangeEvent<HTMLInputElement>) => {
         let newValue = e.currentTarget.value;
-        setPrevValue(JSON.parse(newValue));
+        // setPrevValue(JSON.parse(newValue));
         props.callBack(JSON.parse(newValue));
 
 
@@ -18,7 +18,7 @@ const Input = (props: InputType) => {
     return (
         <div className={'inputBlock'}>
             <span>{props.name}</span>
-            <input className={'input'} type='number' value={prevValue} onChange={onChangeHandle}/>
+            <input className={'input'} type='number' value={props.value} onChange={onChangeHandle}/>
         </div>
     );
 };
